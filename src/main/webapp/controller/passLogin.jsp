@@ -29,37 +29,30 @@
             stmt.setString(1, nombre);
             stmt.setString(2, contrasena);
             ResultSet res = stmt.executeQuery();
-
-            
             boolean existeUser = res.next();
-            
-           
-           
-                    
-                
+            BBDDConnexion.conecta().close();//AÑADIDO, NECESARIO O NO?
             //si no es correcto el login
             if (existeUser == false) {
                 out.println("Login no correcto");
                 response.sendRedirect("../index.jsp");
 //si es correcto el login 
             } else {
-                   
-                   session.setAttribute("iduser", res.getString(1));
+
+                session.setAttribute("iduser", res.getString(1));
                 out.println("Bienvenido " + nombre);
-             
+
                 session.setAttribute("nombre", nombre); //session nickname
-                  stmt = BBDDConnexion.conecta().prepareStatement("SELECT skin FROM user WHERE nickname = ?");
-                  stmt.setString(1, nombre);
-                  res = stmt.executeQuery();
-                  
-                  String skin = "";
-                  while (res.next()){
-                    skin=    res.getString(1);
-                  }
-                                     System.out.println(skin);
- 
-                     
-              response.sendRedirect("../index.jsp");
+                stmt = BBDDConnexion.conecta().prepareStatement("SELECT skin FROM user WHERE nickname = ?");
+                stmt.setString(1, nombre);
+                res = stmt.executeQuery();
+
+                String skin = "";
+                while (res.next()) {
+                    skin = res.getString(1);
+                }
+                System.out.println(skin);
+
+                response.sendRedirect("../index.jsp");
             }
 
             BBDDConnexion.conecta().close();

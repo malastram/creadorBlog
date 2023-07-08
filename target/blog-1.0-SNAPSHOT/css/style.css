@@ -12,51 +12,84 @@ and open the template in the editor.
     background-color: #a9dbff ;
     font-family: 'Roboto', sans-serif;
     color: #353130;
+    width: 90%;
 }
 
 .dark{
     background-color: #19211b;
     font-family: 'Roboto', sans-serif;
     color: wheat;    
+    width: 90%;
 }
 .light{
     background-color: white;
     font-family: 'Roboto', sans-serif;
     color: black;
+    width: 90%;
 
 }
+
+
+main{
+    display: flex;
+    flex-direction: row;
+
+}
+
+aside{
+    width: 20%;
+
+}
+
+aside  h3:hover{
+transform: scale(1.1);
+
+
+}
+
+.asideDark{ 
+    background-color: #181717;
+}
+.asideLight{ 
+    background-color: #cccccc40;
+}
+.asidePrin{ 
+    background-color: #77c4ff96;
+}
+
+
 
 .partForm{
     display: flex;
     align-items: flex-end;
-   /* margin: 0 auto;*/
+    /* margin: 0 auto;*/
 }
 .partForm >*{
     width: 50%;
     margin-bottom: 10px;
-    
+
 }
 
 .listaSup{
-   display: flex;
-   flex-direction: row;
-   justify-content: flex-end;
-   align-items: center;
-   
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+
 }
 
 
 body{
     display: flex;
     flex-direction: column;
-   justify-content: center;
-  
-  
+    justify-content: center;
+
+
 }
 li{
     display: inline-block;
     margin: 20px;
-     font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 a{
     text-decoration: none;
@@ -84,9 +117,9 @@ p{
 }
 .imagenContenido{
     display:block;
-   margin: auto;
-   height: 450px;
-  object-fit: cover;
+    margin: auto;
+    height: 450px;
+    object-fit: cover;
 }
 
 .formReg{
@@ -109,51 +142,51 @@ p{
     display:flex;
     justify-content:space-between;
     background-color: black;
-   
-  
+
+
 }
 .divAvatar{
     width:5%;
     display: flex;
     justify-content: flex-start;
-    
-    
+
+
 }
 .imAvatar{
-   width: 80px;
-     border-radius:75px;
-      border:5px solid #666;
+    width: 80px;
+    border-radius:75px;
+    border:5px solid #666;
 }
 
 
 /*Estilos skins del cuerpo de index*/
 #principal{
-   align-self: center;
+    align-self: center;
     display: flex;
     flex-direction: column;
-   text-align: center;
-   width: 80%;
-   background-color: #90cdf98a;
- 
+    text-align: center;
+    width: 80%;
+    background-color: #90cdf98a;
+
 }
 
 #principalDark{
-   align-self: center;
+    align-self: center;
     display: flex;
     flex-direction: column;
-   text-align: center;
-   width: 80%;
-   background-color: #121111;
- 
+    text-align: center;
+    width: 80%;
+    background-color: #121111;
+
 }
 #principalLight{
-   align-self: center;
+    align-self: center;
     display: flex;
     flex-direction: column;
-   text-align: center;
-   width: 80%;
-   background-color: hsla(240,7%,97%,1);
- 
+    text-align: center;
+    width: 80%;
+    background-color: hsla(240,7%,97%,1);
+
 }
 
 
@@ -168,16 +201,16 @@ p{
 
 }
 #inputDatos > *{
-     display: flex;
+    display: flex;
     flex-direction: column;
     margin:30px;
 
-       
+
 }
 
 #inputCabezera{
     text-align: center;
-     
+
 }
 #cabezeraElementos{
     display: block;
@@ -200,14 +233,14 @@ p{
 
 #textoCabezera{
     width: 80%;
-    
+
 }
 
 input[type=text],input[type=email],input[type=password], select{
     height: 25px;
-     font-family: 'Roboto', sans-serif;
-     margin-bottom: 10px;
-    
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 10px;
+
 }
 
 input[type=button],input[type=submit], input[type=file-upload-button]{
@@ -218,15 +251,15 @@ input[type=button],input[type=submit], input[type=file-upload-button]{
 }
 
 textArea{
-      font-family: 'Roboto', sans-serif;
-    
+    font-family: 'Roboto', sans-serif;
+
 }
 
 .imagenContenido{
     display: block;
     align-self: center;
 
-   width: 80%;
+    width: 80%;
 
 }
 
@@ -238,7 +271,7 @@ textArea{
     display: flex;
     flex-direction: row;
     justify-content: center;
-       
+
 }
 
 #selectCategoria >*{

@@ -20,7 +20,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+       
         <%
 
     if (ServletFileUpload.isMultipartContent(request)) {
@@ -79,10 +79,9 @@ if (!directory.exists()) {
 } else {
   out.println("No se ha seleccionado ningún archivo.");
 }
-            //    File archivo_server = new File("C:/Users/Maik/Documents/NetBeansProjects/m7b2 projects/blog/src/main/webapp/img/"+session.getAttribute("nombre").toString()+"/"+nombreReal);
              
              
-        Thread.currentThread().sleep(3009);
+        Thread.currentThread().sleep(3000);
                 response.sendRedirect("../index.jsp");
 
         %>

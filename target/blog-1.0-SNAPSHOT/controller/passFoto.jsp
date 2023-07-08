@@ -21,9 +21,8 @@
 
 <%
 
-  
     String uploadDir = "C:/Users/Maik/Documents/NetBeansProjects/m7b2 projects/blog/src/main/webapp/img/" + session.getAttribute("nombre").toString() + "/";
-
+    //uploadDir, HAY QUE PROBAR DE CAMBIAR LA RUTA, C://.... POR LOCALHOST.....
 // Verificar si la solicitud contiene archivos
     boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
@@ -54,43 +53,35 @@
                     // Es un campo de formulario
                     if ("categoria".equals(item.getFieldName())) {
                         BufferedReader reader = new BufferedReader(new InputStreamReader(item.getInputStream(), "UTF-8"));
-
-                       categoria =  reader.readLine();
-                       // categoria = "informatica";
+                        categoria = reader.readLine();
                         reader.close(); //cerramos el objeto BufferedReader
                     }
                     if ("elementos".equals(item.getFieldName())) {
                         // Obtener el valor del campo de formulario
                         BufferedReader reader = new BufferedReader(new InputStreamReader(item.getInputStream(), "UTF-8"));
-
                         miString = reader.lines().collect(Collectors.joining());
-                        //   miString = reader.readLine();
                         reader.close(); //cerramos el objeto BufferedReader
 
                         if (BBDDConnexion.conecta() != null) {
-
                             PreparedStatement stmt = BBDDConnexion.conecta().prepareStatement("INSERT INTO articulo (titulo,articulo) VALUES (?,?)");
                             stmt.setString(1, categoria);
                             stmt.setString(2, miString);
                             stmt.executeUpdate();
 
                             //BUSCAR ID DEL ARTICULO
-                            stmt = BBDDConnexion.conecta().prepareStatement("SELECT MAX(idarticulo) FROM articulo");
+                            stmt = BBDDConnexion.conecta().prepareStatement("SELECT MAX(idarticulo) FROM articulo"); //ultimo idarticulo insertado.Siempre será el máximo valor
                             ResultSet res = stmt.executeQuery();
 
                             String idArticulo = "";
                             while (res.next()) {
                                 idArticulo = res.getString(1);
                             }
-                            // insercion a tabla user_articulo
+                            // insercion a tabla user_articulo donde se relaciona el id  del usuario con el id del articulo
 
                             stmt = BBDDConnexion.conecta().prepareStatement("INSERT INTO user_articulo (iduser,idarticulo) VALUES (?,?)");
                             stmt.setString(1, session.getAttribute("iduser").toString());
                             stmt.setString(2, idArticulo);
-                            // stmt.setString(2, "pollas");
-
                             stmt.executeUpdate();
-                            out.println("El resultado del insert del articulo es: " + stmt.getResultSet().getString(1));
                             BBDDConnexion.conecta().close();
                         } else {
                             out.println("Error de conexión");
@@ -98,19 +89,16 @@
 
                     }
                 } else {
-                    // Es un archivo
+                    // Es un archivo (imagen)
                     String fileName = item.getName();
-                    String filePath = uploadDir + File.separator + fileName;
+                    String filePath = uploadDir + File.separator + fileName;  //ruta+nombre de archivo
                     File file = new File(filePath);
                     item.write(file);
-
                     // Agregar el archivo a la lista de imágenes
                     imagenes.add(file);
                 }
             }
 
-            // Realizar las operaciones necesarias con las imágenes y el string
-            // ...
             // Enviar una respuesta al cliente
             response.getWriter().write("Imágenes y string recibidos correctamente");
 
