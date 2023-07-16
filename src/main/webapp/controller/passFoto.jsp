@@ -1,3 +1,4 @@
+<%@page import="java.net.URI"%>
 <%@page import="org.json.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="java.util.stream.Collectors"%>
@@ -20,8 +21,16 @@
 
 
 <%
-
-    String uploadDir = "C:/Users/Maik/Documents/NetBeansProjects/m7b2 projects/blog/src/main/webapp/img/" + session.getAttribute("nombre").toString() + "/";
+    
+    
+    //AÑADIDOS
+   // String appPath = request.getServletContext().getContextPath();
+    
+ //String uploadDir =appPath+"/img/"+session.getAttribute("nombre").toString() + "/";
+ 
+ //  C:\Users\Maik\Documents\NetBeansProjects\m7b2 projects\blog\src\main\webapp\img
+//esta linea que hay debajo funciona bien.
+ String uploadDir = "C:/Users/Maik/Documents/NetBeansProjects/m7b2 projects/blog/src/main/webapp/img/" + session.getAttribute("nombre").toString() + "/";
     //uploadDir, HAY QUE PROBAR DE CAMBIAR LA RUTA, C://.... POR LOCALHOST.....
 // Verificar si la solicitud contiene archivos
     boolean isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -68,10 +77,12 @@
                             stmt.setString(2, miString);
                             stmt.executeUpdate();
 
+                            
+                             BBDDConnexion.conecta().close();//AÑADIDO
                             //BUSCAR ID DEL ARTICULO
                             stmt = BBDDConnexion.conecta().prepareStatement("SELECT MAX(idarticulo) FROM articulo"); //ultimo idarticulo insertado.Siempre será el máximo valor
                             ResultSet res = stmt.executeQuery();
-
+ BBDDConnexion.conecta().close();//AÑADIDO
                             String idArticulo = "";
                             while (res.next()) {
                                 idArticulo = res.getString(1);
@@ -91,7 +102,10 @@
                 } else {
                     // Es un archivo (imagen)
                     String fileName = item.getName();
+                  
                     String filePath = uploadDir + File.separator + fileName;  //ruta+nombre de archivo
+                  //  String filePath = "http://localhost:8095/"+uploadDir + fileName;  //ruta+nombre de archivo
+                    //  URI uri = new URI(filePath);
                     File file = new File(filePath);
                     item.write(file);
                     // Agregar el archivo a la lista de imágenes

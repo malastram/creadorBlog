@@ -20,14 +20,14 @@ import org.apache.catalina.servlet4preview.http.HttpServletRequest;
  */
 public class Contenido {
 
-    public static ArrayList<String> mostrarContenido(String usuario) throws SQLException {
+    public static String mostrarContenido(String usuario) throws SQLException {
         ArrayList<String> resultados = new ArrayList();//array a devolver
 
         PreparedStatement stmt = BBDDConnexion.conecta().prepareStatement("SELECT idarticulo FROM user_articulo WHERE iduser=? ORDER BY idarticulo DESC");
         stmt.setString(1, usuario);
         ResultSet res = stmt.executeQuery();
         ArrayList<String> arrayidArticulo = new ArrayList();
-
+ BBDDConnexion.conecta().close();//AÑADIDO
         while (res.next()) {
             arrayidArticulo.add(res.getString(1));
         }
@@ -39,17 +39,22 @@ public class Contenido {
             res = stmt.executeQuery();
 
             while (res.next()) {
-                resultados.add("<p>" + res.getString(1).toString() + "</p>");
+                resultados.add("<p class='date'>" + res.getString(1) + "</p>");
 
-                resultados.add(res.getString(2).toString());
+                resultados.add(res.getString(2));
 
                 resultados.add("<div class='br'></div>");
 
             }
+  BBDDConnexion.conecta().close();//AÑADIDO
         }
+        StringBuilder str = new StringBuilder();
 
+        for (String result : resultados) {
+            str.append(result);
+        }
         BBDDConnexion.conecta().close();
-        return resultados;
+        return str.toString();
     }
 
     public static ArrayList<String> mostrarUsuarios() throws SQLException {
@@ -57,13 +62,14 @@ public class Contenido {
         PreparedStatement stmt = BBDDConnexion.conecta().prepareStatement("SELECT nickname FROM user");
 
         ResultSet res = stmt.executeQuery();
+          BBDDConnexion.conecta().close();
         while (res.next()) {
 
             usuarios.add(res.getString(1));
 
         }
 
-        BBDDConnexion.conecta().close();
+      
 
         return usuarios;
     }
@@ -80,11 +86,6 @@ public class Contenido {
         }
         BBDDConnexion.conecta().close();
         return usuarios;
-    }
-
-    public static String prueba() {
-        return "prueba";
-
     }
 
 }

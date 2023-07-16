@@ -51,7 +51,8 @@
         <div id="cuerpoEntrada" >   
             <div id="selectEntrada">
                 <select id="entrada">
-                    <option value="parrafo">Parrafo</option>
+                    <option value="parrafo">Párrafo</option>
+                    <option value="nota">Nota</option>
                     <option value="imagen">Imagen</option>
                 </select>
             </div>
@@ -72,6 +73,18 @@
                 <input type="file" id="imagen" multiple>
                 <input type="button" id="buttonImagen" value="Enviar">
             </div>
+            <div id="entradaNota" hidden>  
+
+                <div>
+                    <p>Cuerpo de la anotación</p>
+                    <textarea id="textoNota" placeholder="Escriba aquí el contenido a resaltar"></textarea> 
+
+                </div>
+                <div> 
+                    <input type="button" id="buttonNota" value="Enviar">
+                    <input type="button" id="buttonModNota" value="Cambiar" hidden></div>
+            </div>
+
         </div>
 
         <div id="generar">           

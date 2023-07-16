@@ -48,9 +48,17 @@ window.onload = function () {
         if (select.value === "parrafo") {
             document.getElementById("entradaElementos").hidden = false;
             document.getElementById("imagenEntrada").hidden = true;
+            document.getElementById("entradaNota").hidden = true;
+
         } else if (select.value === "imagen") {
             document.getElementById("entradaElementos").hidden = true;
             document.getElementById("imagenEntrada").hidden = false;
+            document.getElementById("entradaNota").hidden = true;
+
+        } else if (select.value === "nota") {
+            document.getElementById("entradaElementos").hidden = true;
+            document.getElementById("imagenEntrada").hidden = true;
+            document.getElementById("entradaNota").hidden = false;
         }
     }
 
@@ -59,11 +67,11 @@ window.onload = function () {
         const imageArray = arrayImagenes;
         //Obtener categoria
         let categoria = document.getElementById("categoria").value;
-        
-        if(!categoria){
-            categoria="informatica";
+
+        if (!categoria) {
+            categoria = "informatica";
         }
-        
+
         // Crear un objeto FormData
         var formData = new FormData();
         for (let i = 0; i < imageArray.length; i++) {
@@ -72,7 +80,7 @@ window.onload = function () {
         }
         formData.append('categoria', categoria);
         formData.append('elementos', arrayElementos.join(''));
-       
+
 
         // Enviar los datos al servidor
         const xhr = new XMLHttpRequest();
@@ -83,7 +91,7 @@ window.onload = function () {
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 // Manejar la respuesta del servidor si es necesario
-                console.log("RESPONSETEXT:"+xhr.responseText);
+                console.log("RESPONSETEXT:" + xhr.responseText);
 
             }
         };
@@ -140,22 +148,6 @@ window.onload = function () {
         }
     }
 
-
-    function anadirParr() {
-
-        if (contadorCabezeras >= 1) {
-            let campoEntrada = document.getElementById("textoEntrada");
-            let parrafo = document.createElement("p");
-            parrafo.textContent = campoEntrada.value;
-            output.appendChild(parrafo);
-            arrayElementos.push("<p>" + campoEntrada.value + "</p>");
-            campoEntrada.value = "";
-        } else {
-
-            alert("Debes introducir primero la cabezera");
-        }
-
-    }
     function mostrarImagen(event) {
         var imagenSource = event.target.result;
         var contentImage = document.createElement("div");
@@ -187,6 +179,26 @@ window.onload = function () {
         lector.addEventListener('load', mostrarImagen, false);
         lector.readAsDataURL(imagen);
     }
+    
+    function anadirNota(){
+        alert("añadir nota");
+          if (contadorCabezeras >= 1) {
+            let campoEntrada = document.getElementById("textoNota");
+            let divNota = document.createElement("div");
+            divNota.setAttribute("class","anotacion");
+            
+            let parrafo = document.createElement("p");
+            parrafo.textContent = campoEntrada.value;
+            divNota.appendChild(parrafo);
+            output.appendChild(divNota);
+            arrayElementos.push("<div class='anotacion'><p>" + campoEntrada.value + "</p></div>");
+            campoEntrada.value = "";
+        } else {
+
+            alert("Debes introducir primero la cabezera");
+        }
+        
+    }
 
 
 
@@ -196,6 +208,7 @@ window.onload = function () {
     let bGenerar = document.getElementById("buttonGenerar");
     let bCuerpo = document.getElementById("buttonCuerpo");
     let bImagen = document.getElementById("buttonImagen");
+    let bNota = document.getElementById("buttonNota");
 
     //listeners
 
@@ -212,5 +225,9 @@ window.onload = function () {
     // bImagen.addEventListener("change", anadirImg, false);
     bImagen.addEventListener("click", addImages, false);
 
+
+    bNota.addEventListener("click",anadirNota, false);
+
 };
+
 

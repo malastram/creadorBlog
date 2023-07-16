@@ -8,6 +8,13 @@ let todasLasEntradas = document.getElementById("all");
 let output = document.getElementById("principal");
 let arrayIds = []; //todos los usuarios + all
 let listUsers = document.getElementsByTagName("aside")[0].getElementsByTagName("h3");  //lista de todos los usuarios + "todos"
+
+let fechas = document.getElementsByClassName("date");
+for(let i=0; i< fechas.length; i++){
+    let fecha = fechas[i].textContent.split(" ")[0];
+    fechas[i].innerHTML ="Fecha de creación: "+fecha.split("-")[2]+ " / "+fecha.split("-")[1]+" / "+fecha.split("-")[0];
+}
+
 console.log("listauserstag: "+listUsers.length);
 for (let i = 0; i < listUsers.length; i++) {
     listUsers[i].addEventListener("click", function () {

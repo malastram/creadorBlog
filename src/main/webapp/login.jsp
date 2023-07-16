@@ -8,18 +8,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-           <%@ include file="head.jsp" %>
+        <%@ include file="head.jsp" %>
         <title>Login</title>
     </head>
-    <body>
+     <body>
         <%@ include file="header.jsp" %>
-        <h1>Login</h1>     <form action="controller/passLogin.jsp"   method="POST" class="formReg">
-              <label>Usuario:</label>
-              <input type="text" name="nombre">
-              <label>Contraseña:</label>
-                            <input type="text" name="contrasena">
-                            <input type="submit" value="Entrar">
+        <main>
+            <aside></aside>
+            <div class="cuerpoForm">
+            <h1>Login</h1>
+           
+             
+            <div class="formReg">
+            <form action="controller/passLogin.jsp"   method="POST" >
+                    <label>Usuario:</label>
+                    <input type="text" name="nombre">
+                    <label>Contraseña:</label>
+                    <input type="text" name="contrasena">
+                    <input type="submit" value="Entrar">
 
-          </form>  
+                </form>  
+            </div>
+            </div>
+        </main>
+             <%@include file="footer.jsp" %>
     </body>
 </html>

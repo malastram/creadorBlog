@@ -33,7 +33,6 @@
 
     } else {
 %>
-<h2>Completa el registro para ver los usuarios</h2>
 
 <%}
    

@@ -30,10 +30,9 @@
         %>
 
         <aside class="asideDark">
-
-
             <%@include file="aside.jsp" %>
         </aside>
+        
         <div id="principalDark">
             <%            } else if (skin.equals("light")) {
             %>
@@ -55,7 +54,7 @@
                     <div id="principal">
 
                         <%}%>
-                        <h1>Creador de blogs</h1>
+                        <h1>Creador de posts personal</h1>
                         <img src="img/javaProgramming.webp" alt="noImage" class="imCabezera">
 
                         <%
@@ -80,11 +79,17 @@
 
                                     }
                                 }
+                            }else{
+                            out.print("<p>Bienvenido a este espacio. Regístrate y empieza a crear posts personalizados, indicando la categoria "
+                                    + "adecuada. Revisa los posts de los demás usuarios y (próximamente) déjales tus comentarios.</p>");
+                            
+                            
                             }
 
                         %>
                     </div>
                     </main>
+                     <%@include file="footer.jsp" %>
                     <script src="js/index.js"></script>
                     </body>
                     </html>
