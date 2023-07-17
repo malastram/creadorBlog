@@ -4,9 +4,18 @@
     Author     : Maik
 --%>
 
+<%@page import="java.sql.Date"%>
+<%@page import="cat.xtec.ioc.blog.utils.Contenido"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.sql.Timestamp"%>
+<%@page import="cat.xtec.ioc.blog.Modelo.Usuario"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="cat.xtec.ioc.blog.connexion.BBDDConnexion"%>
+
+<%@page import="cat.xtec.ioc.blog.Modelo.*"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,15 +31,15 @@
         <p>Conexión satisfactoria!</p>
 
         <%
-            String nombre = request.getParameter("nombre");
+            String nickname = request.getParameter("nombre");
             String contrasena = request.getParameter("contrasena");
-            out.println(nombre);
+            out.println(nickname);
             PreparedStatement stmt = BBDDConnexion.conecta().prepareStatement("SELECT * FROM user WHERE nickname =? AND contrasena=?");
-            stmt.setString(1, nombre);
+            stmt.setString(1, nickname);
             stmt.setString(2, contrasena);
             ResultSet res = stmt.executeQuery();
             boolean existeUser = res.next();
-            BBDDConnexion.conecta().close();//AÑADIDO, NECESARIO O NO?
+            BBDDConnexion.conecta().close();
             //si no es correcto el login
             if (existeUser == false) {
                 out.println("Login no correcto");
@@ -39,29 +48,60 @@
             } else {
 
                 session.setAttribute("iduser", res.getString(1));
-                out.println("Bienvenido " + nombre);
-
-                session.setAttribute("nombre", nombre); //session nickname
-                stmt = BBDDConnexion.conecta().prepareStatement("SELECT skin FROM user WHERE nickname = ?");
-                stmt.setString(1, nombre);
-                res = stmt.executeQuery();
+                out.println("Bienvenido " + nickname);
 
                 String skin = "";
-                while (res.next()) {
-                    skin = res.getString(1);
-                }
-                System.out.println(skin);
+                int iduser = 0;
+                String nombre = "";
+                String apellidos = "";
+                String edad = "";
+                String mail = "";
+                Date fecha = null;
 
-                response.sendRedirect("../index.jsp");
+                session.setAttribute("nombre", nickname); //session nickname
+                stmt = BBDDConnexion.conecta().prepareStatement("SELECT * FROM user WHERE nickname = ?");
+                stmt.setString(1, nickname);
+                res = stmt.executeQuery();
+
+                BBDDConnexion.conecta().close();
+
+                ArrayList<Usuario> usuarios = new ArrayList();
+
+                ArrayList<String> listaNicknames = Contenido.mostrarUsuarios();
+                out.print("listanicknames=======================" + listaNicknames);
+                Iterator it = listaNicknames.iterator();
+                while (it.hasNext()) {
+                    String prueba = it.next().toString();
+                    out.print("los usuarios.... " + prueba);
+                    stmt = BBDDConnexion.conecta().prepareStatement("SELECT * FROM user WHERE nickname = ?");
+                    stmt.setString(1, prueba);
+                    res = stmt.executeQuery();
+                    while (res.next()) {
+                        iduser = res.getInt(1);
+                        nombre = res.getString(2);
+                        apellidos = res.getString(3);
+                        edad = res.getString(4);
+                        mail = res.getString(5);
+                        contrasena = res.getString(6);
+                        nickname = res.getString(7);
+                        skin = res.getString(8);
+                        fecha = res.getDate(9);
+                        out.println(iduser + " " + nombre + " " + apellidos + " " + edad + " " + mail + " " + contrasena + " " + nickname + " " + skin + " " + fecha);
+                    }
+
+                    Usuario user = new Usuario(iduser, nombre, apellidos, edad, mail, contrasena, nickname, skin, fecha);
+                    user.setArticulosDelUsuario(String.valueOf(iduser));
+                    usuarios.add(user);
+                }
+                session.setAttribute("usuarios", usuarios);
+
             }
 
-            BBDDConnexion.conecta().close();
+            response.sendRedirect("../index.jsp");
         } else {%>
         <p>Error de conexión</p>
         <%}%>
-        <%
-            out.print(BBDDConnexion.conecta());
-        %>
+
 
     </body>
 </html>
