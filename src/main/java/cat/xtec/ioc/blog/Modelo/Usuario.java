@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,7 +27,7 @@ public class Usuario {
     private String nickname;
     private String skin;
     private Date fecha;
-    private String articulos;
+    private ArrayList <String> articulos;
 
     public Usuario(int iduser, String nombre, String apellidos, String edad, String mail, String contrasena, String nickname, String skin, Date fecha) {
         this.iduser = iduser;
@@ -76,7 +77,7 @@ public class Usuario {
         return fecha;
     }
     
-    public String getArticulos(){
+    public ArrayList<String> getArticulos(){
         return articulos;
     }
 

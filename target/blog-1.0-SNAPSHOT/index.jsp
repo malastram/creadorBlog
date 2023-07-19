@@ -74,30 +74,29 @@
                                 while (it.hasNext()) {
                                     user = it.next();
                                     if (user.getNickname().equals(session.getAttribute("nombre"))) {
-                                        out.print("<div  id=" + user.getIduser() + ">" + user.getArticulos() + "</div>");
+                                        out.print("<div  id=" + user.getIduser() + ">" + String.join(" ", user.getArticulos()) + "</div>");
                                     } else {
-                                        out.print("<div hidden id=" + user.getIduser() + ">" + user.getArticulos() + "</div>");
+                                        out.print("<div hidden id=" + user.getIduser() + ">" +String.join(" ", user.getArticulos()) + "</div>");
 
                                     }
 
                                 }
-<<<<<<< Updated upstream
-=======
+
 
                             } else {
                                 out.print("<p>Bienvenido a este espacio. Regístrate y empieza a crear posts personalizados, indicando la categoria "
                                         + "adecuada. Revisa los posts de los demás usuarios y (próximamente) déjales tus comentarios.</p>");
 
->>>>>>> Stashed changes
+
                             }
 
                         %>
                     </div>
                     </main>
-<<<<<<< Updated upstream
-=======
+
+
                     <%@include file="footer.jsp" %>
->>>>>>> Stashed changes
+
                     <script src="js/index.js"></script>
                     </body>
                     </html>
