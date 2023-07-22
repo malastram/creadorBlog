@@ -1,2 +1,5 @@
+cat\xtec\ioc\blog\Modelo\Articulo.class
+cat\xtec\ioc\blog\Modelo\Usuario.class
+cat\xtec\ioc\blog\Modelo\User_Articulo.class
 cat\xtec\ioc\blog\utils\Contenido.class
 cat\xtec\ioc\blog\connexion\BBDDConnexion.class

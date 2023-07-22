@@ -35,10 +35,7 @@
 
             <%@include file="aside.jsp" %>
         </aside>
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
         <div id="principalDark">
             <%            } else if (skin.equals("light")) {
             %>

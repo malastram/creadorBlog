@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.servlet.http.HttpSession;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 
@@ -34,16 +35,13 @@ public class Contenido {
 
         for (int i = 0; i < arrayidArticulo.size(); i++) {
 
-            stmt = BBDDConnexion.conecta().prepareStatement("SELECT fecha, articulo FROM articulo WHERE idarticulo=?");
+            stmt = BBDDConnexion.conecta().prepareStatement("SELECT fecha, articulo, titulo FROM articulo WHERE idarticulo=?");
             stmt.setString(1, arrayidArticulo.get(i)); //todos los id del articulo que pertenecen al usuario-Se repite la consulta por cada entrada 
             res = stmt.executeQuery();
 
             while (res.next()) {
-                resultados.add("<p>" + res.getString(1).toString() + "</p>");
-
-                resultados.add(res.getString(2).toString());
-
-                resultados.add("<div class='br'></div>");
+                resultados.add("<p>" + res.getString(1) + "</p><p hidden class='art'>"+arrayidArticulo.get(i)+"</p><p class='categ'>"+res.getString(3)+"</p>"+res.getString(2)+
+                        "<div class='br'></div>");
 
             }
         }
@@ -82,6 +80,18 @@ public class Contenido {
         return usuarios;
     }
 
+    
+     public static void eliminarArticulos(String[] ids) throws SQLException {
+        String placeholders = String.join(",",ids);
+        
+        PreparedStatement stmt = BBDDConnexion.conecta().prepareStatement("DELETE FROM articulo WHERE idarticulo IN (" + placeholders + ")");
+          
+
+           stmt.executeUpdate();
+          
+        BBDDConnexion.conecta().close();
+       
+    }
     public static String prueba() {
         return "prueba";
 
