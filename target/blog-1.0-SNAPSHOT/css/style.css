@@ -7,26 +7,26 @@ and open the template in the editor.
     Created on : 05-jun-2023, 9:49:19
     Author     : Maik
 */
+
 html{
     height: 100%;
-
 }
 
 body{
     margin-top:  0;
-    position:relative  ;
+    position:relative;
     min-height: 100vh;
+
 }
 
 
 .default{
-    background-color: #a9dbff ;
+   background-color: hsl(3.3deg 72.95% 27.49% / 14%);
     font-family: 'Roboto', sans-serif;
     color: #353130;
     width: 100%;
     display: flex;
     flex-direction: column;
-  
 }
 
 .dark{
@@ -36,8 +36,8 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
-    
 }
+
 .light{
     background-color: white;
     font-family: 'Roboto', sans-serif;
@@ -45,59 +45,77 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
-   
-
 }
-
 
 main{
     display: flex;
     flex-direction: row;
-   flex: 1;
-    margin-bottom: 50px;
+    flex: 1;
+    justify-content: center;
+
+
+
 
 }
 
 aside{
     width: 20%;
-   
-flex: 1;
+    flex: 1;
+    
+    border-radius: 5px;
 }
 
 aside  h3:hover{
     transform: scale(1.1);
-
-
 }
 
-.asideDark{ 
-    background-color: #181717;
-}
-.asideLight{ 
-    background-color: #cccccc40;
-}
-.asidePrin{ 
-    background-color: #77c4ff96;
-}
+
 
 .cuerpoForm{
-   
     display: flex;
     flex-direction: column;
     text-align: center;
     width: 80%;
 }
 
-
 .partForm{
     display: flex;
-    align-items: flex-end;
-    /* margin: 0 auto;*/
+    flex-direction: row;
+    justify-content: space-around;
+
 }
+
 .partForm >*{
     width: 50%;
-    margin-bottom: 10px;
+    margin:  10px;
+    width: 80%;
+}
 
+.formLogin{
+    align-self: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+}
+
+.formLogin > *{
+    margin:   15px;
+    text-align: center;
+
+
+
+}
+
+.vmas{
+    color: cornflowerblue;
+
+}
+
+.categ{
+    margin-bottom: 125px;
+    padding-bottom: 50px;
+    border-bottom: solid grey;
 }
 
 .listaSup{
@@ -105,62 +123,128 @@ aside  h3:hover{
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-
+    padding-right: 5%;
 }
 
+.menuSupMobile{
+    display: none;
+}
+
+.listaSupMobile{
+    display: none;
+}
+
+.listaLogSupMobile{
+    display: none;
+}
 
 li{
     display: inline-block;
-    margin: 20px;
+    margin: 15px;
     font-family: 'Roboto', sans-serif;
 }
 
 i{
     padding-right: 20px;
     color: yellow;
-    
 }
+
 a{
     text-decoration: none;
     font-weight: bold;
     color: #cccccc;
 }
 
+.divArticulo{
+
+    margin: 20px;
+    padding-left: 10%;
+    padding-right: 10%; 
+    width: 70%;
+}
+
+.articuloIndividual{
+    margin-top: 100px;
+    border-style: ridge;
+}
 
 h1, h2, h3{
     margin: 20px;
     text-align: center;
     margin-top:  5%;
+    /* margin-bottom: 5%;*/
 }
 
 p{
     width: 80%;
-    text-align: justify-all;
-    margin: 5%;
+    text-align: justify;
+    margin: 15%;
     font-size: 20px;
 }
+
 .br{
     width: 95%;
-    border: solid 0.2px;
-    margin-top: 150px;
+    border: solid 0.1px whitesmoke;
+    margin-top: 80px;
+    margin-bottom:  80px;
 }
+.title{
+    background-color: black;
+    color: white;
+    padding:40px;
+    width: 100%;
+    margin: 0;
+    
+}
+.principal{
+    width: auto;
+   justify-content: center;
+}
+
+.elemExtras{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.elemExtras p{
+    font-size: 14px;
+
+}
+
 .imagenContenido{
     display:block;
     margin: auto;
     height: 450px;
     object-fit: cover;
+    border :5px solid ;
+    border-color:darkgray;
+    border-radius: 20px;
+    width:80%;
 }
 
 .formReg{
-    text-align:  center;
-    margin:40px;
+    text-align:  end;
+    margin:35px;
+    width: 70%;
+    align-self: center;
 }
+
+.formGest{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid;
+    width: 70%;
+    align-self: center;
+
+}
+
 .formEntrada{
     width: 80%;
 }
 
 .imCabezera{
-    width: 80%;
+    width: 100%;
     height: 250px;
     margin:0 auto;
 }
@@ -172,97 +256,106 @@ p{
     justify-content:space-between;
     background-color: black;
 
+    padding:5px;
 
 }
+header{
 
+    box-shadow: 3px -16px 17px 20px black;
+}
 
 footer{
-    
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
-    
-    
-    
+    box-shadow: 0px 2px 20px 0px black;
 }
+
 .divAvatar{
     width:5%;
     display: flex;
     justify-content: flex-start;
-
-
 }
+
 .imAvatar{
     width: 80px;
+    height: 80px;
     border-radius:75px;
     border:5px solid #666;
 }
 
-
 /*Estilos skins del cuerpo de index*/
+
 #principal{
-   
     display: flex;
     flex-direction: column;
-    text-align: center;
-    width: 80%;
+    text-align: justify;
+    width: 60%;
     height: 100%;
-    background-color: #90cdf98a;
-
+    background-color: hsl(3.3deg 72.95% 27.49% / 14%);
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 #principalDark{
-   
     display: flex;
     flex-direction: column;
-    text-align: center;
-    width: 80%;
+    text-align: justify;
+    width: 60%;
+    height: 100%;
     background-color: #121111;
-
+    padding-left: 20%;
+    padding-right: 20%;
 }
+
 #principalLight{
-  
     display: flex;
     flex-direction: column;
-    text-align: center;
+    text-align: justify;
     width: 80%;
+    height: 100%;
     background-color: hsla(240,7%,97%,1);
-
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 /*Elementos*/
+
 #inputDatos{
     display: flex;
     flex-direction: column;
     text-align:  center;
-
+    width: 90%;
 }
+
 #inputDatos > *{
     display: flex;
     flex-direction: column;
     margin:30px;
-
-
 }
 
-#inputCabezera{
-    text-align: center;
-
-}
 #cabezeraElementos{
     display: block;
+    border: 1px solid;
 }
+#cabezeraElementos > *{
+    margin: 10px;
+}
+
 #cuerpoEntrada{
     display: block;
-    margin:40px;
+
+    border: 1px solid;
 }
+
 #cuerpoEntrada >*{
     margin:40px;
 }
-#entradaElementos{
 
+#entradaElementos{
     margin: 20px;
 }
+
 #textoEntrada, #textoNota{
     width: 80%;
     height:200px;
@@ -270,34 +363,77 @@ footer{
 
 #textoCabezera{
     width: 80%;
-
 }
 
+#generar{
+    align-self: center;
+    align-items: center;
+}
+
+
+.cabezeraComentario{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: inset;
+       
+    
+}
+.cabezeraComentario *{
+    margin:10px;
+}
 input[type=text],input[type=email],input[type=password], select{
     height: 25px;
     font-family: 'Roboto', sans-serif;
     margin-bottom: 10px;
-
 }
 
 input[type=button],input[type=submit], input[type=file-upload-button]{
-    background-color: darkgreen;
+   background-color: limegreen;
     color: white;
     height: 25px;
     font-family: 'Roboto', sans-serif;
+    width: 100px;
+    font-size: 16px;
 }
 
 textArea{
     font-family: 'Roboto', sans-serif;
+}
 
+input[type=checkbox]{
+    cursor: pointer;
+    background-color: black;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+
+    height: 30px;
+    appearance: none;
+    border: 2px solid #888;
+    border-radius: 15px;
+    width: 30px;  
+}
+
+input[type=checkbox]:checked{
+    background-color:blue;
+    animation: shrink-bounce 200ms cubic-bezier(.4,.0,.23,1);
+}
+
+@keyframes shrink-bounce{
+    0%{
+        transform: scale(1);
+    }
+    33%{    
+        transform: scale(.85);
+    }
+    100%{
+        transform: scale(1);    
+    }
 }
 
 .imagenContenido{
     display: block;
     align-self: center;
-
     width: 80%;
-
 }
 
 #outputDatos{
@@ -307,22 +443,204 @@ textArea{
 #selectCategoria{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-
+    justify-content: center; 
+    border: 1px solid;
 }
 
 #selectCategoria >*{
     margin: 10px;
+
 }
 
-
 .anotacion{
-    
     border-style: solid 2px black ;
-    border:2px;
+    border:2px solid;
     border-color: red;
     color:red;
+<<<<<<< Updated upstream
     background-color: darkgray;
     
     
 }
+=======
+    background-color: #ddacac;
+    margin:15px;
+}
+
+
+
+.gestEntradas{
+    display: flex;
+    flex-direction: row;
+    border: solid 2px;
+    border-color: black;
+    margin:5px 0px 5px 0px;
+    padding: 25px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: aliceblue;
+    color:black;
+}
+
+.divGestEntradas{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+#formEliminar{
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+
+}
+#formEliminar > input[type=submit]{
+    width: 100%;
+    background-color: red;
+}
+th > p{
+    text-decoration: underline;
+}
+table{
+    width: 100%;
+}
+th, td{
+    /* padding-right:  70px;*/
+    text-align: center;
+    width: 25%;
+}
+
+#formul{
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+   /* border-style: solid;*/
+    padding: 10px;
+
+}
+#formul > textArea{
+    width: 80%;
+    height: 250px;
+    margin: 25px;
+}
+#formul > input[type=text],input[type=submit] {
+    width: 80%;
+    margin: 25px;
+}
+
+
+#outputComentarios{
+    padding: 25px;
+    margin-top: 90px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.comment{
+ /*   border-style:groove;*/
+   /* border-color: bisque;*/
+    width: 80%;
+    text-align: left;
+    background-color: #feccff;
+    margin:10px;
+    padding:5px;
+}
+
+.comment *{
+    color:black;
+    padding: 5px;
+    margin:5px;
+
+}
+
+.comment p:last-child{
+    text-align: end;
+    
+}
+#outputPassword p, #outputUser p{
+    margin: 5px;
+    padding: 2px;
+    text-align: center;
+    
+    
+}
+@media only screen and (max-width: 768px) {
+
+    /* For mobile phones: */
+    main{
+        display: block;
+    }
+
+
+    #principal, #principalDark, #principalLight{
+        padding-right: 0;
+        padding-left: 8%;
+
+    }
+
+    .listaSup{
+        display: none; 
+    }
+
+    .listaSupMobile{
+        display: flex;
+    }
+
+    .menuSupMobile{
+        display: flex;
+    }
+
+    .listaLogSupMobile{
+        display: none;
+        position: absolute;
+        padding-top: 0;
+        padding-bottom: 30px;
+        align-items: center;
+        width: 100%;
+        background-color: black;       
+        overflow: scroll;
+    }
+
+    .listaLogSupMobile >a{
+        font-size: 30px; 
+        padding-bottom: 20px;
+        white-space: pre;
+    }
+
+    #principal {
+        width: 80%;
+    }
+
+    #principal >p, #principalLight >p, #principalDark >p{
+        font-size: 20px;
+    }
+
+    aside{
+        display: flex;
+        flex-direction: row;
+        padding-bottom:  15px;
+        padding-top:15px;
+        overflow: scroll;
+        width: 100%;
+
+    }
+
+
+    .divGestEntradas{
+
+        border-spacing: 0;
+        overflow-x: auto;
+    }
+    .divGestEntradas p{
+        font-size: 16px;
+
+    }
+}
+
+
+
+>>>>>>> Stashed changes

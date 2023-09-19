@@ -37,8 +37,10 @@
                 response.sendRedirect("../index.jsp");
 //si es correcto el login 
             } else {
+                session.setMaxInactiveInterval(-1);
 
                 session.setAttribute("iduser", res.getString(1));
+<<<<<<< Updated upstream
                 out.println("Bienvenido " + nombre);
 
                 session.setAttribute("nombre", nombre); //session nickname
@@ -51,9 +53,59 @@
                     skin = res.getString(1);
                 }
                 System.out.println(skin);
+=======
+                  session.setAttribute("skin", res.getString(8));
+                out.println("Bienvenido " + nickname);
+
+                String skin = "";
+                int iduser = 0;
+                String nombre = "";
+                String apellidos = "";
+                String edad = "";
+                String mail = "";
+                Date fecha = null;
+
+                session.setAttribute("nombre", nickname); //session nickname
+                /*     stmt = BBDDConnexion.conecta().prepareStatement("SELECT * FROM user WHERE nickname = ?");
+                stmt.setString(1, nickname);
+                res = stmt.executeQuery();
+
+                BBDDConnexion.conecta().close();*/
+
+                ArrayList<Usuario> usuarios = new ArrayList();
+
+                ArrayList<String> listaNicknames = Contenido.mostrarUsuarios();
+
+                Iterator it = listaNicknames.iterator();
+                while (it.hasNext()) {
+                    String nickUsuario = it.next().toString();
+                    stmt = BBDDConnexion.conecta().prepareStatement("SELECT * FROM user WHERE nickname = ?");
+                    stmt.setString(1, nickUsuario);
+                    res = stmt.executeQuery();
+                    while (res.next()) {
+                        iduser = res.getInt(1);
+                        nombre = res.getString(2);
+                        apellidos = res.getString(3);
+                        edad = res.getString(4);
+                        mail = res.getString(5);
+                        contrasena = res.getString(6);
+                        nickname = res.getString(7);
+                        skin = res.getString(8);
+                        fecha = res.getDate(9);
+                        // out.println(iduser + " " + nombre + " " + apellidos + " " + edad + " " + mail + " " + contrasena + " " + nickname + " " + skin + " " + fecha);
+                    }
+
+                    Usuario user = new Usuario(iduser, nombre, apellidos, edad, mail, contrasena, nickname, skin, fecha);
+                    user.setArticulosDelUsuario(String.valueOf(iduser));
+                    usuarios.add(user);
+                }
+                session.setAttribute("usuarios", usuarios);
+              
+>>>>>>> Stashed changes
 
                 response.sendRedirect("../index.jsp");
             }
+<<<<<<< Updated upstream
 
             BBDDConnexion.conecta().close();
         } else {%>
@@ -62,6 +114,13 @@
         <%
             out.print(BBDDConnexion.conecta());
         %>
+=======
+BBDDConnexion.conecta().close();
+            response.sendRedirect("../index.jsp");
+        } else {%>
+        <p>Error de conexión</p>
+        <%}%>
+>>>>>>> Stashed changes
 
     </body>
 </html>

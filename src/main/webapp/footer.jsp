@@ -7,13 +7,24 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <footer>
-  <div class="footerPrin">
-         <div class="listaSup">
+    <div class="footerPrin">
+        <div class="listaSup">
             <ul>
                 <li><i class="fa-regular fa-copyright"></i><a href="#">Creador de posts</a>
                 <li><i class="fa-solid fa-info"></i><a href="#">Información de interés</a></li>
-                
+
                 <li><i class="fa-solid fa-question"></i><a href="help.jsp">Help</a></li>
-            </ul></div>
+            </ul>
         </div>
+        <div class="listaSupMobile">
+            <ul>
+                <li><i class="fa-regular fa-copyright"><a href="#"></a></i>
+                <li><i class="fa-solid fa-info"></i><a href="#"></a></li>
+
+                <li><i class="fa-solid fa-question"></i><a href="help.jsp"></a></li>
+            </ul>
+        </div>        
+
+    </div>
+
 </footer>

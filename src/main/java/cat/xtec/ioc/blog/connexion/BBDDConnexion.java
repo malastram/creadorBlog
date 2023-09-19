@@ -21,7 +21,16 @@ public class BBDDConnexion
            try 
               {                  System.out.println("Estableciendo conexion");
 
-                Class.forName("com.mysql.jdbc.Driver"); 
+              Class.forName("com.mysql.jdbc.Driver"); 
+               //  Class.forName("org.mariadb.jdbc.Driver"); 
+                /*Siguen los nuevos datos de acceso:  
+URL : https://node151552-env-0213938.jelastic.saveincloud.net  
+Login : root
+Contraseña : Jddzo7hIQ9*/                           
+
+               //   String servidor="jdbc:mariadb://node151552-env-0213938.jelastic.saveincloud.net:3306/portfolio";
+             //   String usuario="root";
+             //   String contrasenia="Jddzo7hIQ9";
                 String servidor="jdbc:mysql://localhost:3306/portfolio";
                 String usuario="root";
                 String contrasenia="root";
@@ -32,7 +41,7 @@ public class BBDDConnexion
                 System.out.println(ex.getMessage());
               }
              catch(Exception ex)
-             {
+             {               
                 System.out.println(ex.getMessage());                
              }
             finally

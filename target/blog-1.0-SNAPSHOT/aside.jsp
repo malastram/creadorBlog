@@ -12,10 +12,9 @@
 <%@page import="cat.xtec.ioc.blog.connexion.BBDDConnexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-
 <%
     if (session.getAttribute("iduser") != null) {
-        out.print("<h2>Usuarios</h2>");
+      //  out.print("<h2>Usuarios</h2>");
         out.print("<br>");
         out.print("<h3 id='all'>Todos</h3>");
         ArrayList<String> usuarios = new ArrayList();
@@ -31,9 +30,13 @@
             }
         }
 
+<<<<<<< Updated upstream
     } else {
 %>
 
 <%}
    
+=======
+    } 
+>>>>>>> Stashed changes
 %>

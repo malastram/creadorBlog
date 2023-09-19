@@ -13,7 +13,6 @@ window.onload = function () {
     let nombreAvatar = document.getElementById("nombreAvatar").innerHTML;
     let output = document.getElementById("outputDatos");
 
-
     function guardarCabezera() {
         let cabezera = document.getElementById("textoCabezera");
         let cabezeraText = document.getElementById("cabezera");
@@ -84,7 +83,8 @@ window.onload = function () {
 
         // Enviar los datos al servidor
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:8095/blog/controller/passFoto.jsp', true);
+       // xhr.open('POST', 'http://localhost:8095/blog/controller/passFoto.jsp', true);
+        xhr.open('POST', 'controller/passFoto.jsp', true);
         xhr.overrideMimeType('text/xml; charset=iso-8859-1');
         //    xhr.setRequestHeader("Content-Type", "multipart/form-data");
 
@@ -143,8 +143,8 @@ window.onload = function () {
             const image = files[i];
             // Agregar la imagen al array
             arrayImagenes.push(image);
-            arrayElementos.push("<img class='imagenContenido'src='" + "http://localhost:8095/blog/img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");//
-
+            //arrayElementos.push("<img class='imagenContenido'src='" + "http://localhost:8095/blog/img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");//
+   arrayElementos.push("<img class='imagenContenido'src='" + "img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");//
         }
     }
 
@@ -169,7 +169,8 @@ window.onload = function () {
             const image = files[i];
             // Agregar la imagen al array
             arrayImagenes.push(image);
-            arrayElementos.push("<img class='imagenContenido'src='" + "http://localhost:8095/blog/img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");//
+            //arrayElementos.push("<img class='imagenContenido'src='" + "http://localhost:8095/blog/img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");
+            arrayElementos.push("<img class='imagenContenido'src='" + "img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");
 
         }
     }

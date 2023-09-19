@@ -15,17 +15,18 @@
    <%@ include file="header.jsp" %>
 
         <h1>Configuración del perfil</h1>
-        <div class="formReg">
+        <div class="formGest">
         <form action="controller/passImagen.jsp"   method="POST" enctype="multipart/form-data">
             <div class="partForm">
           <label>Avatar</label>
             <input type="file" name="avatar" accept="image/png, .jpeg, .jpg, image/gif">
             <input type="submit" value="Enter">
-            </div>          
+                     
                     </form>
-            <div class="formReg">
+   </div>
                 <form action="controller/configPerfil.jsp" method="POST">
                   <div class="partForm">
+                      <label>Skin</label>
                       <select name="skin" title="Selecciona una skin" autofocus>
                     <option value="default" >Predet</option>
                                    <option value="dark">Dark</option>
@@ -36,5 +37,6 @@
             </div>
                 </form>
             </div>
+        <script src="js/responsive.js"></script>
     </body>
 </html>

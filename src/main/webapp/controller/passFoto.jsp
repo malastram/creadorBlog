@@ -1,4 +1,9 @@
+<<<<<<< Updated upstream
 <%@page import="java.net.URI"%>
+=======
+<%@page import="java.util.Iterator"%>
+<%@page import="cat.xtec.ioc.blog.Modelo.Usuario"%>
+>>>>>>> Stashed changes
 <%@page import="org.json.JSONObject"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="java.util.stream.Collectors"%>
@@ -21,6 +26,7 @@
 
 
 <%
+<<<<<<< Updated upstream
     
     
     //AÑADIDOS
@@ -31,6 +37,11 @@
  //  C:\Users\Maik\Documents\NetBeansProjects\m7b2 projects\blog\src\main\webapp\img
 //esta linea que hay debajo funciona bien.
  String uploadDir = "C:/Users/Maik/Documents/NetBeansProjects/m7b2 projects/blog/src/main/webapp/img/" + session.getAttribute("nombre").toString() + "/";
+=======
+
+    String uploadDir = "C:/Users/Maik/Documents/NetBeansProjects/m7b2 projects/blog/src/main/webapp/img/" + session.getAttribute("nombre").toString() + "/";
+  //  String uploadDir =getServletContext().getRealPath("index.jsp")+"/img/"+ session.getAttribute("nombre").toString() + "/";
+>>>>>>> Stashed changes
     //uploadDir, HAY QUE PROBAR DE CAMBIAR LA RUTA, C://.... POR LOCALHOST.....
 // Verificar si la solicitud contiene archivos
     boolean isMultipart = ServletFileUpload.isMultipartContent(request);
@@ -49,6 +60,7 @@
         try {
 
             // Parsear los elementos de archivo de la solicitud
+            request.setCharacterEncoding("UTF-8");//configuración codificación carácteres
             List<FileItem> items = upload.parseRequest(request);
 
             // Variables para almacenar las imágenes y el string
@@ -68,6 +80,7 @@
                     if ("elementos".equals(item.getFieldName())) {
                         // Obtener el valor del campo de formulario
                         BufferedReader reader = new BufferedReader(new InputStreamReader(item.getInputStream(), "UTF-8"));
+                        // miString = reader.lines().collect(Collectors.joining());
                         miString = reader.lines().collect(Collectors.joining());
                         reader.close(); //cerramos el objeto BufferedReader
 
@@ -87,6 +100,8 @@
                             while (res.next()) {
                                 idArticulo = res.getString(1);
                             }
+                            
+                             BBDDConnexion.conecta().close();
                             // insercion a tabla user_articulo donde se relaciona el id  del usuario con el id del articulo
 
                             stmt = BBDDConnexion.conecta().prepareStatement("INSERT INTO user_articulo (iduser,idarticulo) VALUES (?,?)");
@@ -94,6 +109,23 @@
                             stmt.setString(2, idArticulo);
                             stmt.executeUpdate();
                             BBDDConnexion.conecta().close();
+
+                            //NUEVO, AÑADIR EL ULTIMO ARTICULO AL OBJETO USUARIO PARA PODER SER MOSTRADO AL ACTUALIZAR
+                            //           Usuario user = new Usuario(iduser, nombre, apellidos, edad, mail, contrasena, nickname, skin, fecha);
+                            // user.setArticulosDelUsuario(String.valueOf(iduser));
+                            // usuarios.add(user);
+                            ArrayList<Usuario> usuarios = (ArrayList<Usuario>) session.getAttribute("usuarios");
+                            String ultimoArticulo = null;
+                            Iterator it = usuarios.iterator();
+                            while (it.hasNext()) {
+                                Usuario user = (Usuario) it.next();
+                                if (user.getIduser() == Integer.parseInt(session.getAttribute("iduser").toString())) {
+                                    user.setArticulosDelUsuario(session.getAttribute("iduser").toString());
+
+                                }
+                            }
+                            session.setAttribute("usuarios", usuarios);
+//FIN NUEVO
                         } else {
                             out.println("Error de conexión");
                         }
@@ -107,6 +139,15 @@
                   //  String filePath = "http://localhost:8095/"+uploadDir + fileName;  //ruta+nombre de archivo
                     //  URI uri = new URI(filePath);
                     File file = new File(filePath);
+                   
+              /*      
+                 //NUEVO, CREA DIRECTORIO SI NO EXISTE, POR COMPROBAR   
+                    if (file.mkdirs()) {
+                        out.print("Directorio creado");
+                    }
+                    */
+                    
+                    
                     item.write(file);
                     // Agregar el archivo a la lista de imágenes
                     imagenes.add(file);

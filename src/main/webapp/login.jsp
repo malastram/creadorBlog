@@ -13,6 +13,7 @@
     </head>
      <body>
         <%@ include file="header.jsp" %>
+<<<<<<< Updated upstream
         <main>
             <aside></aside>
             <div class="cuerpoForm">
@@ -32,5 +33,16 @@
             </div>
         </main>
              <%@include file="footer.jsp" %>
+=======
+        <h1>Login</h1>     <form action="controller/passLogin.jsp"   method="POST" class="formLogin">
+              <label>Usuario:</label>
+              <input type="text" name="nombre">
+              <label>Contraseña:</label>
+                            <input type="password" name="contrasena">
+                            <input type="submit" value="Entrar">
+
+          </form>  
+               <script src="js/responsive.js"></script>
+>>>>>>> Stashed changes
     </body>
 </html>
