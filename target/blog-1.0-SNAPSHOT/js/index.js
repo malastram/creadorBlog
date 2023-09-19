@@ -4,26 +4,7 @@
  * and open the template in the editor.
  */
 
-<<<<<<< Updated upstream
-let todasLasEntradas = document.getElementById("all");
-let output = document.getElementById("principal");
-let arrayIds = []; //todos los usuarios + all
-let listUsers = document.getElementsByTagName("aside")[0].getElementsByTagName("h3");  //lista de todos los usuarios + "todos"
 
-let fechas = document.getElementsByClassName("date");
-for(let i=0; i< fechas.length; i++){
-    let fecha = fechas[i].textContent.split(" ")[0];
-    fechas[i].innerHTML ="Fecha de creación: "+fecha.split("-")[2]+ " / "+fecha.split("-")[1]+" / "+fecha.split("-")[0];
-}
-
-console.log("listauserstag: "+listUsers.length);
-for (let i = 0; i < listUsers.length; i++) {
-    listUsers[i].addEventListener("click", function () {
-        mostrarContenido(listUsers[i].id);
-    });
-    arrayIds.push(listUsers[i].id.split("-")[0]);  //almacenamos solo el id: (ej) de 00-link nos quedamos con 00
-    console.log(arrayIds);}
-=======
 window.onload = function (){
 
     let todasLasEntradas = document.getElementById("all");
@@ -50,7 +31,7 @@ window.onload = function (){
            let art = articulos[i].innerHTML;
             //let art = articulos[i].outerHTML;
             articulos[i].innerHTML = art.toString().slice(0, 240);
->>>>>>> Stashed changes
+
 
         }
         console.log("children " + articulos.length);

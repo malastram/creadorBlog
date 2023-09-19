@@ -10,11 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-<<<<<<< Updated upstream
-import javax.servlet.http.HttpSession;
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
-=======
->>>>>>> Stashed changes
 
 /**
  *
@@ -22,52 +17,32 @@ import org.apache.catalina.servlet4preview.http.HttpServletRequest;
  */
 public class Contenido {
 
-    public static String mostrarContenido(String usuario) throws SQLException {
+   public static ArrayList<String> mostrarContenido(String usuario) throws SQLException {
         ArrayList<String> resultados = new ArrayList();//array a devolver
 
         PreparedStatement stmt = BBDDConnexion.conecta().prepareStatement("SELECT idarticulo FROM user_articulo WHERE iduser=? ORDER BY idarticulo DESC");
         stmt.setString(1, usuario);
         ResultSet res = stmt.executeQuery();
         ArrayList<String> arrayidArticulo = new ArrayList();
- BBDDConnexion.conecta().close();//AÑADIDO
+
         while (res.next()) {
             arrayidArticulo.add(res.getString(1));
         }
 
         for (int i = 0; i < arrayidArticulo.size(); i++) {
 
-            stmt = BBDDConnexion.conecta().prepareStatement("SELECT fecha, articulo FROM articulo WHERE idarticulo=?");
+            stmt = BBDDConnexion.conecta().prepareStatement("SELECT fecha, articulo, titulo FROM articulo WHERE idarticulo=?");
             stmt.setString(1, arrayidArticulo.get(i)); //todos los id del articulo que pertenecen al usuario-Se repite la consulta por cada entrada 
             res = stmt.executeQuery();
   BBDDConnexion.conecta().close();
             while (res.next()) {
-<<<<<<< Updated upstream
-                resultados.add("<p class='date'>" + res.getString(1) + "</p>");
-
-                resultados.add(res.getString(2));
-
-                resultados.add("<div class='br'></div>");
-
-=======
                 resultados.add("<div class='articuloIndividual'><p hidden class='art'>" + arrayidArticulo.get(i) + "</p><h3>Fecha de creación: " + res.getString(1) + "</h3><h3 class='categ'>Categoria: " + res.getString(3) + "</h3><div>" + res.getString(2)
                         + "</div></div><div class='elemExtras'><div><p>Comentarios:" + Contenido.contarComentarios(arrayidArticulo.get(i)) + "</p></div><a class='vmas' href='articulo.jsp?articulo=" + arrayidArticulo.get(i) + "'>ver más</a><div class='br'></div></div>");
 //<input type='button' value='ver más' onclick='articulo.jsp?nombre="+res.getString(2)+"'>
->>>>>>> Stashed changes
             }
-  BBDDConnexion.conecta().close();//AÑADIDO
         }
-        StringBuilder str = new StringBuilder();
-
-<<<<<<< Updated upstream
-        for (String result : resultados) {
-            str.append(result);
-        }
-        BBDDConnexion.conecta().close();
-        return str.toString();
-=======
       
         return resultados;
->>>>>>> Stashed changes
     }
 
     public static ArrayList<String> mostrarUsuarios() throws SQLException {
@@ -75,22 +50,15 @@ public class Contenido {
         PreparedStatement stmt = BBDDConnexion.conecta().prepareStatement("SELECT nickname FROM user");
 
         ResultSet res = stmt.executeQuery();
-<<<<<<< Updated upstream
-          BBDDConnexion.conecta().close();
-=======
+
                 BBDDConnexion.conecta().close();
 
->>>>>>> Stashed changes
+
         while (res.next()) {
 
             usuarios.add(res.getString(1));
 
         }
-
-<<<<<<< Updated upstream
-      
-=======
->>>>>>> Stashed changes
 
         return usuarios;
     }
@@ -110,8 +78,6 @@ public class Contenido {
         return usuarios;
     }
 
-<<<<<<< Updated upstream
-=======
     public static void eliminarArticulos(String[] ids) throws SQLException {
         String placeholders = String.join(",", ids);
 //eliminar filas tabla articulo
@@ -199,5 +165,5 @@ public class Contenido {
 
     }
 
->>>>>>> Stashed changes
+
 }

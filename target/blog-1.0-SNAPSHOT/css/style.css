@@ -457,12 +457,7 @@ input[type=checkbox]:checked{
     border:2px solid;
     border-color: red;
     color:red;
-<<<<<<< Updated upstream
-    background-color: darkgray;
-    
-    
-}
-=======
+
     background-color: #ddacac;
     margin:15px;
 }
@@ -641,6 +636,3 @@ th, td{
     }
 }
 
-
-
->>>>>>> Stashed changes
