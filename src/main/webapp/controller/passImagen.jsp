@@ -43,8 +43,8 @@ ServletFileUpload upload = new ServletFileUpload(factory);
      String fileName = "avatar.jpg";
       //  session.setAttribute("avatar", fileName);
         // Construir la ruta completa del archivo en el directorio local
-        String directoryPath = "C:/Users/Maik/Documents/NetBeansProjects/m7b2 projects/blog/src/main/webapp/img/"+session.getAttribute("nombre").toString()+"/" ;
-       // String directoryPath =getServletContext().getRealPath("/index.jsp")+"/img/"+session.getAttribute("nombre").toString()+"/" ;
+     //   String directoryPath = "C:/Users/Maik/Documents/NetBeansProjects/m7b2 projects/blog/src/main/webapp/img/"+session.getAttribute("nombre").toString()+"/" ;
+        String directoryPath ="/opt/tomcat/webapps/ROOT/img/"+session.getAttribute("nombre").toString()+"/" ;
         // Construir la ruta completa del archivo en el directorio local
         String filePath =directoryPath+ fileName;
         

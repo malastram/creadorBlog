@@ -26,22 +26,11 @@
 
 
 <%
-<<<<<<< Updated upstream
-    
-    
-    //AÑADIDOS
-   // String appPath = request.getServletContext().getContextPath();
-    
- //String uploadDir =appPath+"/img/"+session.getAttribute("nombre").toString() + "/";
- 
- //  C:\Users\Maik\Documents\NetBeansProjects\m7b2 projects\blog\src\main\webapp\img
-//esta linea que hay debajo funciona bien.
- String uploadDir = "C:/Users/Maik/Documents/NetBeansProjects/m7b2 projects/blog/src/main/webapp/img/" + session.getAttribute("nombre").toString() + "/";
-=======
 
-    String uploadDir = "C:/Users/Maik/Documents/NetBeansProjects/m7b2 projects/blog/src/main/webapp/img/" + session.getAttribute("nombre").toString() + "/";
-  //  String uploadDir =getServletContext().getRealPath("index.jsp")+"/img/"+ session.getAttribute("nombre").toString() + "/";
->>>>>>> Stashed changes
+
+  //  String uploadDir = "C:/Users/Maik/Documents/NetBeansProjects/m7b2 projects/blog/src/main/webapp/img/" + session.getAttribute("nombre").toString() + "/";
+    String uploadDir ="/opt/tomcat/webapps/ROOT/img/"+ session.getAttribute("nombre").toString() + "/";
+
     //uploadDir, HAY QUE PROBAR DE CAMBIAR LA RUTA, C://.... POR LOCALHOST.....
 // Verificar si la solicitud contiene archivos
     boolean isMultipart = ServletFileUpload.isMultipartContent(request);
