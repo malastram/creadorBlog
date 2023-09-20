@@ -4,6 +4,7 @@
     Author     : Maik
 --%>
 
+<%@page import="java.lang.System.out"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
@@ -18,14 +19,6 @@ if(session.getAttribute("skin")!=null){
 <header>
  <div class="headerPrin">
 
-<<<<<<< Updated upstream
-    <%
-        if (session.getAttribute("nombre") != null) {
-            String imagen = "img/" + session.getAttribute("nombre").toString() + "/avatar.jpg";
-    %>
-   <div class="divAvatar">
-            <img src="<%=imagen%>" alt="foto" class="imAvatar">
-=======
 %> <body class="<%=skin%>">
 <%
     } else {%><body class="default">
@@ -67,7 +60,6 @@ if(session.getAttribute("skin")!=null){
             <a href="gestionUsuario.jsp">Gestionar cuenta</a><
             <a href="help.jsp">Help</a><
 
->>>>>>> Stashed changes
         </div>
         <div class="listaSup">
             <ul>
@@ -97,8 +89,6 @@ if(session.getAttribute("skin")!=null){
         <%   } else {
         %>
 
-<<<<<<< Updated upstream
-=======
         <div class="divAvatar">
         </div>
         <div class="listaSup">
@@ -122,6 +112,4 @@ if(session.getAttribute("skin")!=null){
 
     </div>
 
-
->>>>>>> Stashed changes
 </header>

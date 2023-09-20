@@ -14,21 +14,21 @@ let allCamposOK = false;
 $("#password").keyup(function (e) {
 
     var data = $("#password").val();
-   var regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*_])");  //1 minuscula, 1 mayuscula, 1 digito y 1 caracter especial
-   var testPassword = regex.test(data);  //comprobamos la expresión regular
-    console.log(data.length+ " regex: "+ testPassword);
+    var regex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*_])");  //1 minuscula, 1 mayuscula, 1 digito y 1 caracter especial
+    var testPassword = regex.test(data);  //comprobamos la expresión regular
+    console.log(data.length + " regex: " + testPassword);
 
     if (data.length < 5) {
-        procesarComentario("<p>Contraseña débil!</p>","1");
+        procesarComentario("<p>Contraseña débil!</p>", "1");
         $("#outputPassword").css("color", "red");
         passwordOK = false;
     } else if (data.length >= 5 && data.length <= 8) {
-        procesarComentario("<p>Contraseña media!</p>","1");
+        procesarComentario("<p>Contraseña media!</p>", "1");
         $("#outputPassword").css("color", "orange");
         passwordOK = false;
 
     } else if (data.length > 8 && testPassword) {
-        procesarComentario("<p>Contraseña fuerte!</p>","1");
+        procesarComentario("<p>Contraseña fuerte!</p>", "1");
         $("#outputPassword").css("color", "green");
         passwordOK = true;
     }
@@ -60,15 +60,14 @@ $(".campoForm").keyup(function (e) {
 });
 
 
-
 function procesarComentario(datos, out) {
-if(out === "1"){
-    $("#outputPassword").html(datos);
+    if (out === "1") {
+        $("#outputPassword").html(datos);
     }
-    
-    if(out==="2"){
-    $("#outputUser").html(datos);
-        
+
+    if (out === "2") {
+        $("#outputUser").html(datos);
+
     }
 }
 

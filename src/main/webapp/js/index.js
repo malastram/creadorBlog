@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 
-
-window.onload = function (){
+window.onload = function () {
 
     let todasLasEntradas = document.getElementById("all");
     let output = document.getElementById("principal");
@@ -28,16 +27,12 @@ window.onload = function (){
         let articulos = document.getElementsByClassName("articuloIndividual");
 
         for (let i = 0; articulos.length; i++) {
-           let art = articulos[i].innerHTML;
-            //let art = articulos[i].outerHTML;
+            let art = articulos[i].innerHTML;
             articulos[i].innerHTML = art.toString().slice(0, 240);
-
 
         }
         console.log("children " + articulos.length);
     }
-
-
 
 
     function mostrarContenido(id) {
@@ -63,7 +58,5 @@ window.onload = function (){
 
         }
     }
-
-
 
 };

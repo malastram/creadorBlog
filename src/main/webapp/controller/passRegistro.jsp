@@ -38,9 +38,9 @@
                 PreparedStatement stmt = BBDDConnexion.conecta().prepareStatement("SELECT * FROM user WHERE nickname =?");
                 stmt.setString(1, nickname);
                 ResultSet res = stmt.executeQuery();
-                //  out.print(res.getFetchSize());
+              
                 boolean existeUser = res.next();
-                BBDDConnexion.conecta().close(); //AÑADIDO, HACE FALTA AQUI O NO?
+                BBDDConnexion.conecta().close(); 
 
                 if (existeUser == false) {
 

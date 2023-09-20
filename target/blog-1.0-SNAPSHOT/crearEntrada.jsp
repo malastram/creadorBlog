@@ -48,21 +48,7 @@
                 <input type="button" id="buttonModCabezera" value="Cambiar" hidden>
                 <p id="cabezera" hidden></p>
             </div>
-<<<<<<< Updated upstream
-        </div>
-        <div id="cuerpoEntrada" >   
-            <div id="selectEntrada">
-                <select id="entrada">
-                    <option value="parrafo">Párrafo</option>
-                    <option value="nota">Nota</option>
-                    <option value="imagen">Imagen</option>
-                </select>
-            </div>
 
-            <div id="entradaElementos" >
-                <div><p>Cuerpo de la entrada</p>
-                    <textarea id="textoEntrada" placeholder="Escriba aquí el contenido de la entrada"></textarea> 
-=======
             <div id="cuerpoEntrada" >   
                 <div id="selectEntrada">
                     <select id="entrada">
@@ -70,7 +56,7 @@
                         <option value="nota">Nota</option>
                         <option value="imagen">Imagen</option>
                     </select>
->>>>>>> Stashed changes
+
                 </div>
 
                 <div id="entradaElementos" >

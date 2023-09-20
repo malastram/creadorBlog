@@ -15,49 +15,11 @@
     </head>
     <body>
         <%@ include file="header.jsp" %>
-<<<<<<< Updated upstream
-        <main>
-            <aside></aside>
-            <div class="cuerpoForm">
-            <h1>Registro</h1>
-            <img src="img/javaProgramming.webp" alt="noImage" class="imCabezera">
-            <div class="formReg">
-                <form action="controller/passRegistro.jsp"   method="POST" >
-                    <fieldset>
-                        <legend>Regístrate para empezar a crear entradas</legend>
-                        <div class="partForm"> 
-                            <label>Nombre</label>
-                            <input type="text" placeholder="escriba su nombre" name="nombre" required>
-                        </div>
-                        <div class="partForm"> 
-                            <label>Apellidos</label>
-                            <input type="text" placeholder="escriba sus apellidos" name="apellidos" required>
-                        </div>
-                        <div class="partForm"> 
-                            <label>Nickname</label>
-                            <input type="text" placeholder="escriba su nickname" name="nickname" required>
-                        </div>
-                        <div class="partForm">  <label>Email</label>
-                            <input type="email" placeholder="escriba su correo" name="correo" required></div>
-                        <div class="partForm">    <label>Password</label>
-                            <input type="password" placeholder="escriba su contraseña" name="password" required></div>
-                        <div class="partForm">    
-                            <label>Edad</label>
-                            <input type="text" placeholder="escriba su edad" name="edad" ></div>
-
-                        <div class="partForm"> <div></div>
-                            <input type="submit" value="Envia">
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-            </div>
-        </main>
-             <%@include file="footer.jsp" %>
-=======
         <h2>Registro</h2>
         <%
-            ArrayList<String> usuarios =  Contenido.mostrarUsuarios();%>
+            ArrayList<String> usuarios =  Contenido.mostrarUsuarios();
+        %>
+            
         <p hidden id="usuarios"> <%=usuarios.toString()%></p>
         <div class="formReg">
             <form action="controller/passRegistro.jsp"   method="POST" >
@@ -95,7 +57,6 @@
          <div id="outputUser"></div>
                 <script src="js/jquery-3.7.0.min.js"></script> 
 
->>>>>>> Stashed changes
         <script src="js/registro.js"></script>
                <script src="js/responsive.js"></script>
         

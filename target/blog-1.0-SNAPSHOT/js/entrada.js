@@ -83,10 +83,8 @@ window.onload = function () {
 
         // Enviar los datos al servidor
         const xhr = new XMLHttpRequest();
-       // xhr.open('POST', 'http://localhost:8095/blog/controller/passFoto.jsp', true);
         xhr.open('POST', 'controller/passFoto.jsp', true);
         xhr.overrideMimeType('text/xml; charset=iso-8859-1');
-        //    xhr.setRequestHeader("Content-Type", "multipart/form-data");
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
@@ -143,8 +141,7 @@ window.onload = function () {
             const image = files[i];
             // Agregar la imagen al array
             arrayImagenes.push(image);
-            //arrayElementos.push("<img class='imagenContenido'src='" + "http://localhost:8095/blog/img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");//
-   arrayElementos.push("<img class='imagenContenido'src='" + "img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");//
+            arrayElementos.push("<img class='imagenContenido'src='" + "img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");//
         }
     }
 
@@ -169,7 +166,6 @@ window.onload = function () {
             const image = files[i];
             // Agregar la imagen al array
             arrayImagenes.push(image);
-            //arrayElementos.push("<img class='imagenContenido'src='" + "http://localhost:8095/blog/img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");
             arrayElementos.push("<img class='imagenContenido'src='" + "img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");
 
         }
@@ -180,14 +176,14 @@ window.onload = function () {
         lector.addEventListener('load', mostrarImagen, false);
         lector.readAsDataURL(imagen);
     }
-    
-    function anadirNota(){
+
+    function anadirNota() {
         alert("añadir nota");
-          if (contadorCabezeras >= 1) {
+        if (contadorCabezeras >= 1) {
             let campoEntrada = document.getElementById("textoNota");
             let divNota = document.createElement("div");
-            divNota.setAttribute("class","anotacion");
-            
+            divNota.setAttribute("class", "anotacion");
+
             let parrafo = document.createElement("p");
             parrafo.textContent = campoEntrada.value;
             divNota.appendChild(parrafo);
@@ -198,10 +194,8 @@ window.onload = function () {
 
             alert("Debes introducir primero la cabezera");
         }
-        
+
     }
-
-
 
     let bCabezera = document.getElementById("buttonCabezera");
     let bModCabezera = document.getElementById("buttonModCabezera");
@@ -227,7 +221,7 @@ window.onload = function () {
     bImagen.addEventListener("click", addImages, false);
 
 
-    bNota.addEventListener("click",anadirNota, false);
+    bNota.addEventListener("click", anadirNota, false);
 
 };
 

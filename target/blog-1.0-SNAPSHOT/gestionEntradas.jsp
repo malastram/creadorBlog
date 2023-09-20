@@ -4,8 +4,6 @@
     Author     : Maik
 --%>
 
-<<<<<<< Updated upstream
-=======
 <%@page import="java.util.Iterator"%>
 <%@page import="com.mysql.cj.util.StringUtils"%>
 <%@page import="cat.xtec.ioc.blog.Modelo.Usuario"%>
@@ -15,31 +13,28 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="cat.xtec.ioc.blog.connexion.BBDDConnexion"%>
 
->>>>>>> Stashed changes
+
 <%@page import="cat.xtec.ioc.blog.utils.Contenido"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <%@ include file="head.jsp" %>
-<<<<<<< Updated upstream
-        <title>Modificar blog</title>
-=======
+
         <title>Gestion entradas</title>
->>>>>>> Stashed changes
+
     </head>
 
     <%@ include file="header.jsp" %>
     <h2>Listado de elementos</h2>
-    <%if (session.getAttribute("iduser") != null) {
+    <%
+        if (session.getAttribute("iduser") != null) {
     %>
     <p  id="nombreAvatar"><%= session.getAttribute("iduser").toString()%></p>
-    <%
-        
+    <%       
         
       out.print(Contenido.mostrarContenido(session.getAttribute("iduser").toString()));
-        
-        
+                
         } else {
             response.sendRedirect("index.jsp");
         }%>
@@ -47,9 +42,6 @@
     <div id="outputDatos"></div>
     <script src="#"></script>
 
-<<<<<<< Updated upstream
-</body>
-=======
     <main>
         <%
             //ESTABLECER DISEÑO SKIN
@@ -102,11 +94,9 @@
 
                                             out.print("<div>" + data + "</div>");
 
-                                            //CREAR JAVASCRIPT PARA CONTROLAR QUE MUESTRE SÓLO EL TÍTULO
                                         }
 
                                     }
-
                                 }
 
                             } else {
@@ -123,5 +113,5 @@
     <script src="js/gestEntradas.js"></script>
            <script src="js/responsive.js"></script>
     </body>
->>>>>>> Stashed changes
+
 </html>

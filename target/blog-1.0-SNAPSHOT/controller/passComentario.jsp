@@ -25,16 +25,10 @@
    
    String textoCompleto = "<h2>"+titulo.toString()+"</h2><p>"+comentario.toString()+"</p>";
    
- 
-   
    String resena ="valoración negativa!";
    if(positivo!=null){
        resena = "valoración positiva!";
    }
-    
-        
-   // out.print("<h2>"+titulo+"</h2><p> "+comentario+"</p><p> "+resena+"</p><p> Artículo nº: "+idArticulo+"</p>");
-     
 
   Contenido.ingresarComentarios(idArticulo, textoCompleto, resena, user);
      ArrayList<String> coments = new ArrayList();
@@ -45,7 +39,6 @@
                        out.print("<div class='comment'>"+it.next()+"</div>");
   
                     }
-  //out.print(Contenido.mostrarComentarios(idArticulo));
 %>  
 
 
