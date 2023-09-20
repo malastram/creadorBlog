@@ -10,7 +10,7 @@ let parr = "";
 let tit = "";
 let contenido = [];
 for (let i = 0; i < articulos.length; i++) {
-    console.log(articulos[i].tagName);
+  //  console.log(articulos[i].tagName);
    
         contenido.push("<div class='gestEntradas'><div class='divGestEntradas'><table><tr><th><p>Fecha</p></th><th><p>Título</p></th><th><p>Categoría</p></th><th><p>Eliminar</p></th></tr>"
                 + "<tr><td>" + articulos[i].getElementsByTagName("h3")[0].outerHTML.split(" ")[3] + "</td><td>" +"<p>"+ articulos[i].getElementsByTagName("h1")[0].outerHTML.slice(4,-3) +"</p>" +"</td><td>" + articulos[i].getElementsByTagName("h3")[1].outerHTML.split(":")[1] +

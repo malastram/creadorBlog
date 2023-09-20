@@ -30,13 +30,6 @@
             }
         }
 
-<<<<<<< Updated upstream
-    } else {
-%>
 
-<%}
-   
-=======
     } 
->>>>>>> Stashed changes
 %>
