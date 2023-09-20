@@ -22,6 +22,11 @@
         <%@ include file="header.jsp" %>
     <main>
         <div class="divArticulo">
+          <%
+          String prueba = "";
+          %>
+            
+            
             <%
              
                 String articulo = request.getParameter("articulo");
@@ -37,7 +42,9 @@
 
             %> 
             <div id="outputComentarios">
-                <%    ArrayList<String> coments = new ArrayList();
+                
+                <%  
+                    ArrayList<String> coments = new ArrayList();
                     coments = Contenido.mostrarComentarios(articulo);
                     Iterator<String> it = coments.iterator();
 
@@ -45,8 +52,6 @@
                        out.print("<div class='comment'>"+it.next()+"</div>");
 
                     }
-//out.print(coments);
-
 
                 %>
 
