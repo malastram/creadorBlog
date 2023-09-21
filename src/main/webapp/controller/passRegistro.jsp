@@ -24,10 +24,6 @@
 
         <%
             if (BBDDConnexion.conecta() != null) {
-        %>
-        <p>Conexión satisfactoria!</p>
-
-        <%
                 String nombre = request.getParameter("nombre");
                 String apellidos = request.getParameter("apellidos");
                 String edad = request.getParameter("edad");
@@ -43,7 +39,6 @@
                 BBDDConnexion.conecta().close(); 
 
                 if (existeUser == false) {
-
                     stmt = BBDDConnexion.conecta().prepareStatement("INSERT INTO user (iduser,nombre, apellidos, edad, mail, contrasena, nickname,skin) VALUES (NULL,?,?,?,?,?,?,?)");
                     stmt.setString(1, nombre);
                     stmt.setString(2, apellidos);
@@ -54,8 +49,10 @@
                     stmt.setString(7, "default");
                     stmt.executeUpdate();
                     BBDDConnexion.conecta().close();
+                       response.sendRedirect("../index.jsp");
                 } else {
                     out.println("Error de conexión");
+                       response.sendRedirect("../index.jsp");
                 }
 
             }

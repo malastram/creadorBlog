@@ -24,76 +24,73 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+
         <%
             if (BBDDConnexion.conecta() != null) {
-        %>
-        <p>Conexión satisfactoria!</p>
 
-        <%
-            String nickname = request.getParameter("nombre");
-            String contrasena = request.getParameter("contrasena");
-            out.println(nickname);
-            PreparedStatement stmt = BBDDConnexion.conecta().prepareStatement("SELECT * FROM user WHERE nickname =? AND contrasena=?");
-            stmt.setString(1, nickname);
-            stmt.setString(2, contrasena);
-            ResultSet res = stmt.executeQuery();
-            boolean existeUser = res.next();
-            BBDDConnexion.conecta().close();
-            //si no es correcto el login
-            if (existeUser == false) {
-                out.println("Login no correcto");
-                response.sendRedirect("../index.jsp");
+                String nickname = request.getParameter("nombre");
+                String contrasena = request.getParameter("contrasena");
+                out.println(nickname);
+                PreparedStatement stmt = BBDDConnexion.conecta().prepareStatement("SELECT * FROM user WHERE nickname =? AND contrasena=?");
+                stmt.setString(1, nickname);
+                stmt.setString(2, contrasena);
+                ResultSet res = stmt.executeQuery();
+                boolean existeUser = res.next();
+                BBDDConnexion.conecta().close();
+                //si no es correcto el login
+                if (existeUser == false) {
+                    out.println("Login no correcto");
+                    response.sendRedirect("../index.jsp");
 //si es correcto el login 
-            } else {
-                session.setMaxInactiveInterval(-1);
+                } else {
+                    session.setMaxInactiveInterval(-1);
 
-                session.setAttribute("iduser", res.getString(1));
-                session.setAttribute("skin", res.getString(8));
-                out.println("Bienvenido " + nickname);
+                    session.setAttribute("iduser", res.getString(1));
+                    session.setAttribute("skin", res.getString(8));
+                    out.println("Bienvenido " + nickname);
 
-                String skin = "";
-                int iduser = 0;
-                String nombre = "";
-                String apellidos = "";
-                String edad = "";
-                String mail = "";
-                Date fecha = null;
+                    String skin = "";
+                    int iduser = 0;
+                    String nombre = "";
+                    String apellidos = "";
+                    String edad = "";
+                    String mail = "";
+                    Date fecha = null;
 
-                session.setAttribute("nombre", nickname); //session nickname
+                    session.setAttribute("nombre", nickname); //session nickname
 
-                ArrayList<Usuario> usuarios = new ArrayList();
+                    ArrayList<Usuario> usuarios = new ArrayList();
 
-                ArrayList<String> listaNicknames = Contenido.mostrarUsuarios();
+                    ArrayList<String> listaNicknames = Contenido.mostrarUsuarios();
 
-                Iterator it = listaNicknames.iterator();
-                while (it.hasNext()) {
-                    String nickUsuario = it.next().toString();
-                    stmt = BBDDConnexion.conecta().prepareStatement("SELECT * FROM user WHERE nickname = ?");
-                    stmt.setString(1, nickUsuario);
-                    res = stmt.executeQuery();
-                    while (res.next()) {
-                        iduser = res.getInt(1);
-                        nombre = res.getString(2);
-                        apellidos = res.getString(3);
-                        edad = res.getString(4);
-                        mail = res.getString(5);
-                        contrasena = res.getString(6);
-                        nickname = res.getString(7);
-                        skin = res.getString(8);
-                        fecha = res.getDate(9);
+                    Iterator it = listaNicknames.iterator();
+                    while (it.hasNext()) {
+                        String nickUsuario = it.next().toString();
+                        stmt = BBDDConnexion.conecta().prepareStatement("SELECT * FROM user WHERE nickname = ?");
+                        stmt.setString(1, nickUsuario);
+                        res = stmt.executeQuery();
+                        while (res.next()) {
+                            iduser = res.getInt(1);
+                            nombre = res.getString(2);
+                            apellidos = res.getString(3);
+                            edad = res.getString(4);
+                            mail = res.getString(5);
+                            contrasena = res.getString(6);
+                            nickname = res.getString(7);
+                            skin = res.getString(8);
+                            fecha = res.getDate(9);
+                        }
+
+                        Usuario user = new Usuario(iduser, nombre, apellidos, edad, mail, contrasena, nickname, skin, fecha);
+                        user.setArticulosDelUsuario(String.valueOf(iduser));
+                        usuarios.add(user);
                     }
-
-                    Usuario user = new Usuario(iduser, nombre, apellidos, edad, mail, contrasena, nickname, skin, fecha);
-                    user.setArticulosDelUsuario(String.valueOf(iduser));
-                    usuarios.add(user);
+                    session.setAttribute("usuarios", usuarios);
+                    BBDDConnexion.conecta().close();
+                    response.sendRedirect("../index.jsp");
                 }
-                session.setAttribute("usuarios", usuarios);
 
-            }
-            BBDDConnexion.conecta().close();
-            response.sendRedirect("../index.jsp");
-        } else {%>
+            } else {%>
         <p>Error de conexión</p>
         <%}%>
 

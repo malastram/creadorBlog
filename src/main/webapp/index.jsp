@@ -83,7 +83,7 @@
 
                             } else {
                                 out.print("<p>Bienvenido a este espacio. Regístrate y empieza a crear posts personalizados, indicando la categoria "
-                                        + "adecuada. Revisa los posts de los demás usuarios y (próximamente) déjales tus comentarios.</p>");
+                                        + "adecuada. Revisa los posts de los demás usuarios y déjales tus comentarios.</p>");
 
                             }
 

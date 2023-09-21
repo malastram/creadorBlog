@@ -4,16 +4,11 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function () {
-
-   
-    $("#formul").submit(function () {
-
- 
-        var data = $(this).serialize();
+$(document).ready(function () {   
+    $("#formul").submit(function () { 
         
-      
-        $.post("controller/passComentario.jsp", data, procesarComentario);
+        var data = $(this).serialize();       
+              $.post("controller/passComentario.jsp", data, procesarComentario);
        return false;
 
     });
@@ -23,7 +18,5 @@ $(document).ready(function () {
         $("#outputComentarios").html(datos);
        
     }
-
-
 
 });
