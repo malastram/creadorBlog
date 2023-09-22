@@ -30,18 +30,15 @@
     <%
         if (session.getAttribute("iduser") != null) {
     %>
-    <p  id="nombreAvatar"><%= session.getAttribute("iduser").toString()%></p>
+    
     <%       
         
-      out.print(Contenido.mostrarContenido(session.getAttribute("iduser").toString()));
+     // out.print(Contenido.mostrarContenido(session.getAttribute("iduser").toString()));
                 
         } else {
             response.sendRedirect("index.jsp");
         }%>
   
-    <div id="outputDatos"></div>
-    <script src="#"></script>
-
     <main>
         <%
             //ESTABLECER DISEÑO SKIN

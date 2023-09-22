@@ -34,7 +34,7 @@
                 while (res.next()) {
                     idAutor = res.getString(4);
                   //  out.print("<div hidden id='#autor'>"+res.getString(4)+"</div>");
-                    out.print("<h3>Artículo de " +idAutor+"</h3><h3>Fecha de creación: " + res.getString(1) + "</h3><h3 class='categ'>Categoria: " + res.getString(3) + "</h3>" + res.getString(2));
+                    out.print("<h3>Fecha de creación: " + res.getString(1) + "</h3><h3 class='categ'>Categoria: " + res.getString(3) + "</h3>" + res.getString(2));
                 }
                 BBDDConnexion.conecta().close();
 

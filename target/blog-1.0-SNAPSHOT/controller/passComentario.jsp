@@ -23,7 +23,7 @@
    //String idArticulo=request.getParameter("idArticulo").toString();
    String idArticulo=request.getParameter("idArticulo");
    String user = session.getAttribute("nombre").toString();
-   String idAutor = session.getAttribute("idAutor").toString();
+   String idAutor =request.getParameter("idAutor");
    
    String textoCompleto = "<h2>"+titulo.toString()+"</h2><p>"+comentario.toString()+"</p>";
    

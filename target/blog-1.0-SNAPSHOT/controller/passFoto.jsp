@@ -100,7 +100,7 @@
                                     BBDDConnexion.conecta().close();
 
                                     ArrayList<Usuario> usuarios = (ArrayList<Usuario>) session.getAttribute("usuarios");
-                                    String ultimoArticulo = null;
+                                  //  String ultimoArticulo = null;
                                     Iterator it = usuarios.iterator();
                                     while (it.hasNext()) {
                                         Usuario user = (Usuario) it.next();

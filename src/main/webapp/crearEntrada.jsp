@@ -94,18 +94,7 @@
                 <input type="button" id="buttonGenerar" value="Guardar datos">
 
             </div>
-            <div id="entradaNota" hidden>  
-
-                <div>
-                    <p>Cuerpo de la anotación</p>
-                    <textarea id="textoNota" placeholder="Escriba aquí el contenido a resaltar"></textarea> 
-
-                </div>
-                <div> 
-                    <input type="button" id="buttonNota" value="Enviar">
-                    <input type="button" id="buttonModNota" value="Cambiar" hidden></div>
-            </div>
-
+       
         </div>
         <div id="outputDatos"></div>
       

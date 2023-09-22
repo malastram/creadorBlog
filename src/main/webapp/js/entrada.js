@@ -6,7 +6,7 @@
 window.onload = function () {
 
 //guardaremos todo el cuerpo de la entrada
-    let stringCabezera = "";
+  //  let stringCabezera = "";
     let arrayElementos = [];
     let arrayImagenes = [];
     let contadorCabezeras = 0;
@@ -141,7 +141,7 @@ window.onload = function () {
             const image = files[i];
             // Agregar la imagen al array
             arrayImagenes.push(image);
-            arrayElementos.push("<img class='imagenContenido'src='" + "img/" + nombreAvatar + "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");//
+            arrayElementos.push("<img class='imagenContenido' src='img/" + nombreAvatar+ "/" + arrayImagenes[arrayImagenes.length - 1].name + "'>");//
         }
     }
 
