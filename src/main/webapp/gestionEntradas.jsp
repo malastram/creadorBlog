@@ -13,6 +13,7 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="cat.xtec.ioc.blog.connexion.BBDDConnexion"%>
 
+
 <%@page import="cat.xtec.ioc.blog.utils.Contenido"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,7 +27,18 @@
 
     <%@ include file="header.jsp" %>
     <h2>Listado de elementos</h2>
-
+    <%
+        if (session.getAttribute("iduser") != null) {
+    %>
+    
+    <%       
+        
+     // out.print(Contenido.mostrarContenido(session.getAttribute("iduser").toString()));
+                
+        } else {
+            response.sendRedirect("index.jsp");
+        }%>
+  
     <main>
         <%
             //ESTABLECER DISEÑO SKIN
@@ -79,11 +91,9 @@
 
                                             out.print("<div>" + data + "</div>");
 
-                                            //CREAR JAVASCRIPT PARA CONTROLAR QUE MUESTRE SÓLO EL TÍTULO
                                         }
 
                                     }
-
                                 }
 
                             } else {

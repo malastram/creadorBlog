@@ -24,10 +24,6 @@
 
         <%
             if (BBDDConnexion.conecta() != null) {
-        %>
-        <p>Conexión satisfactoria!</p>
-
-        <%
                 String nombre = request.getParameter("nombre");
                 String apellidos = request.getParameter("apellidos");
                 String edad = request.getParameter("edad");
@@ -38,12 +34,11 @@
                 PreparedStatement stmt = BBDDConnexion.conecta().prepareStatement("SELECT * FROM user WHERE nickname =?");
                 stmt.setString(1, nickname);
                 ResultSet res = stmt.executeQuery();
-                //  out.print(res.getFetchSize());
+              
                 boolean existeUser = res.next();
-                BBDDConnexion.conecta().close(); //AÑADIDO, HACE FALTA AQUI O NO?
+                BBDDConnexion.conecta().close(); 
 
                 if (existeUser == false) {
-
                     stmt = BBDDConnexion.conecta().prepareStatement("INSERT INTO user (iduser,nombre, apellidos, edad, mail, contrasena, nickname,skin) VALUES (NULL,?,?,?,?,?,?,?)");
                     stmt.setString(1, nombre);
                     stmt.setString(2, apellidos);
@@ -54,8 +49,22 @@
                     stmt.setString(7, "default");
                     stmt.executeUpdate();
                     BBDDConnexion.conecta().close();
+                    
+                    //crear directorio personal para guardar imágenes
+                       String uploadDir = "/opt/tomcat/webapps/ROOT/img/"+nickname;
+                      File directorio = new File(uploadDir);
+        if (!directorio.exists()) {
+            if (directorio.mkdirs()) {
+                System.out.println("Directorio creado");
+            } else {
+                System.out.println("Error al crear directorio");
+            }
+        }
+                    
+                       response.sendRedirect("../index.jsp");
                 } else {
                     out.println("Error de conexión");
+                       response.sendRedirect("../index.jsp");
                 }
 
             }
